@@ -1,0 +1,68 @@
+.text {
+    --rotation: 0;
+    --x: 0;
+    --y: 0;
+    --opacity: 1;
+    --blur: 0;
+    --scale: 1;
+
+    transform: rotate(var(--rotation)) translate3d(var(--x), var(--y), 0) scale(var(--scale));
+    opacity: var(--opacity);
+    filter: blur(var(--blur));
+}
+
+
+.text--w-sm {
+    width: 30%;
+}
+
+.text--w-md {
+    width: 50%;
+}
+
+.text--w-lg {
+    width: 75%;
+    
+    @media (max-width: $lg){
+        width: 85%;
+    }
+
+    @media (max-width: $md){
+        width: 100%;
+    }
+}
+
+.text--fs-xs {
+    @include fs-sm;
+
+    @media (max-width: $md){
+        @include fs-xs;
+    }
+}
+
+.text--fs-sm {
+    @include fs-md;
+
+    @media (max-width: $md){
+        @include fs-sm;
+    }
+}
+
+.text--fs-md {
+    font-size: 4rem;
+    @include fs-md-clamp;
+}
+
+.text--fs-lg {
+    // font-size: 8rem;
+    @include fs-lg-clamp;
+}
+
+.text--fs-xl {
+    // font-size: 10rem;
+    @include fs-xl-clamp;
+}
+
+.question {
+    text-indent: 3em;
+}

@@ -1,0 +1,47 @@
+.nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    right: $gutter;
+    top: calc(50% - 25px);
+    height: 50px;
+    @include fs-sm;
+
+    @media (max-width: $lg){
+        
+        top: unset;
+        right: unset;
+        bottom: $gutter;
+        padding: 0 $gutter;
+        height: unset;
+        width: 100%;
+    }
+
+    @media (max-width: $md){
+        // @include fs-xs;
+        bottom: $gutter/2;
+    }
+
+    @media (max-width: $sm){
+        padding: 0 $gutter/2;
+    }
+
+}
+
+.nav__list {
+    @include clean-list;
+    display: flex;
+
+    @media (max-width: $lg){
+        justify-content: space-between;
+    }
+}
+
+.nav__item {
+    margin-right: 2em;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}

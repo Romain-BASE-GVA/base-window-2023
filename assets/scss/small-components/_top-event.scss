@@ -1,0 +1,53 @@
+.top-event {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    padding: $gutter;
+    transform: translate3d(-50%, 0, 0);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include fs-md;
+    text-align: center;
+    white-space: nowrap;
+
+    > * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--visible {
+        display: flex;
+    }
+
+    @media (max-width: $lg){
+        top: $gutter/2*3;
+    }
+
+    @media (max-width: $md){
+        top: $gutter;
+        padding: $gutter/2;
+        @include fs-sm;
+    }
+}
+
+.top-event__title {
+    font-style: italic;
+    font-size: 1em;
+}
+
+.top-event__artist {
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: bold;
+    padding: .25em 0 .15em 0;
+}
+
+.top-event__time {
+    display: flex;
+    flex-direction: row;
+    font-size: .8em;
+}

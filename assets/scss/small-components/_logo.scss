@@ -1,0 +1,30 @@
+.logo {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: calc(50% - 25px);
+    left: $gutter;
+    height: 50px;
+    color: var(--txt-color);
+    text-decoration: none;
+    @include fs-md;
+
+    @media (max-width: $lg){
+        display: flex;
+        justify-content: center;
+        top: $gutter;
+        left: unset;
+        padding: 0 $gutter;
+        height: unset;
+        width: 100%;
+    }
+
+    @media (max-width: $md){
+        top: $gutter/2;
+        @include fs-sm;
+    }
+
+    // @media (max-width: $sm){
+    //     left: $gutter/2;
+    // }
+}

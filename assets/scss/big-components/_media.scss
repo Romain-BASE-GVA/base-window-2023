@@ -1,0 +1,65 @@
+.media {
+    --rotation: 0;
+    --x: 0;
+    --y: 0;
+    --opacity: 1;
+    --blur: 0;
+    --scale: 1;
+
+    transform: rotate(var(--rotation)) translate3d(var(--x), var(--y), 0) scale(var(--scale));
+    opacity: var(--opacity);
+    filter: blur(var(--blur));
+
+    img,
+    video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.media--xs {
+    height: 15vh
+}
+
+.media--sm {
+    height: 25vh
+}
+
+.media--md {
+    height: 50vh
+}
+
+.media--lg {
+    height: 75vh
+}
+
+.media--xl {
+    height: 85vh
+}
+
+.media--full {
+    width: 100%;
+    height: 100%;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.media--blur {
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+    }
+}

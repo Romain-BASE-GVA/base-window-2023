@@ -1,0 +1,28 @@
+.slider__index {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    display: block;
+    padding: $gutter;
+    @include fs-md;
+    // &--visible {
+    //     display: block;
+    // }
+    @media (max-width: $md){
+        padding: $gutter/2;
+        @include fs-sm;
+    }
+
+    @media (max-width: $sm){
+        display: none;
+    }
+}
+
+.slider__index__current {
+
+}
+
+.slider__index__all {
+
+}

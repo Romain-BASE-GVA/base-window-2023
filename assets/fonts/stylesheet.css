@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-Bold.eot');
+    src: url('BaseGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-Bold.woff2') format('woff2'),
+        url('BaseGrotesk-Bold.woff') format('woff'),
+        url('BaseGrotesk-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-Regular.eot');
+    src: url('BaseGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-Regular.woff2') format('woff2'),
+        url('BaseGrotesk-Regular.woff') format('woff'),
+        url('BaseGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-ThinItalic.eot');
+    src: url('BaseGrotesk-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-ThinItalic.woff2') format('woff2'),
+        url('BaseGrotesk-ThinItalic.woff') format('woff'),
+        url('BaseGrotesk-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-BoldItalic.eot');
+    src: url('BaseGrotesk-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-BoldItalic.woff2') format('woff2'),
+        url('BaseGrotesk-BoldItalic.woff') format('woff'),
+        url('BaseGrotesk-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-LightItalic.eot');
+    src: url('BaseGrotesk-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-LightItalic.woff2') format('woff2'),
+        url('BaseGrotesk-LightItalic.woff') format('woff'),
+        url('BaseGrotesk-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-Black.eot');
+    src: url('BaseGrotesk-Black.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-Black.woff2') format('woff2'),
+        url('BaseGrotesk-Black.woff') format('woff'),
+        url('BaseGrotesk-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-Medium.eot');
+    src: url('BaseGrotesk-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-Medium.woff2') format('woff2'),
+        url('BaseGrotesk-Medium.woff') format('woff'),
+        url('BaseGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-Light.eot');
+    src: url('BaseGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-Light.woff2') format('woff2'),
+        url('BaseGrotesk-Light.woff') format('woff'),
+        url('BaseGrotesk-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-Thin.eot');
+    src: url('BaseGrotesk-Thin.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-Thin.woff2') format('woff2'),
+        url('BaseGrotesk-Thin.woff') format('woff'),
+        url('BaseGrotesk-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-BlackItalic.eot');
+    src: url('BaseGrotesk-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-BlackItalic.woff2') format('woff2'),
+        url('BaseGrotesk-BlackItalic.woff') format('woff'),
+        url('BaseGrotesk-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-MediumItalic.eot');
+    src: url('BaseGrotesk-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-MediumItalic.woff2') format('woff2'),
+        url('BaseGrotesk-MediumItalic.woff') format('woff'),
+        url('BaseGrotesk-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BaseGrotesk';
+    src: url('BaseGrotesk-RegularItalic.eot');
+    src: url('BaseGrotesk-RegularItalic.eot?#iefix') format('embedded-opentype'),
+        url('BaseGrotesk-RegularItalic.woff2') format('woff2'),
+        url('BaseGrotesk-RegularItalic.woff') format('woff'),
+        url('BaseGrotesk-RegularItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
