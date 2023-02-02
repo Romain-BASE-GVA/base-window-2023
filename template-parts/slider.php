@@ -62,7 +62,7 @@
 	endwhile; endif; wp_reset_postdata();
 ?>
 
-<div class="slider" data-previous-event="<?php echo $prevPostPermalink; ?>" data-next-event="<?php echo $nextPostPermalink; ?>">
+<div class="slider" id="<?php echo $eventID; ?>" data-previous-event="<?php echo $prevPostPermalink; ?>" data-next-event="<?php echo $nextPostPermalink; ?>">
 	<div class="slider__list">
 
 		<div class="slide slide--active">

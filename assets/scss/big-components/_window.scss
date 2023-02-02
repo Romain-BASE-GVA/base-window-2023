@@ -1,67 +1,91 @@
-.window {
+.window-info {
     position: fixed;
+    display: flex;
+    align-items: center;
     width: 450px;
-    height: 50vh;
-    background-color: rgba(var(--bg-color), .9);
-    border: 1px solid var(--txt-color);
-    border-radius: $radius;
-    backdrop-filter: blur(4px);
+    max-height: 100vh;
+    right: $gutter;
+    bottom: $gutter;
+    padding: $gutter;
+    @include fs-sm;
     opacity: 0;
     visibility: hidden;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
     transition: visibility .1s ease-in-out, opacity .1s ease-in-out;
-
-    &--is-open {
-        opacity: 1;
-        visibility: visible;
-        //transform: scale(1);
-    }
-
-    // .gallery-is-open & {
-    //     background-color: rgba(white, .75);
-    // }
-
-    .gallery-is-closed & {
-        background-color: rgba(black, .75);
-    }
-}
-
-
-
-.window--info {
-    bottom: $gutter;
-    right: $gutter;
+    z-index: 50;
 
     .gallery-is-open & {
-        background-color: rgba(white, .75);
+        background-color: rgba(245,245,245,0.75);
+        padding: $gutter/2;
     }
-}
 
-.window__wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    p {
+        text-indent: 3em;
+    }
 
-    >div {
+    @media (max-width: $sm){
         padding: $gutter/2;
     }
 }
 
-.window--exhibitions {
-    top: 0;
-    left: calc(50% - 225px);
-    background-color: transparent;
-    height: calc(100vh);
+.window-exhibitions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 450px;
+    max-height: 100vh;
     border: none;
     backdrop-filter: unset;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .1s ease-in-out, opacity .1s ease-in-out;
+    z-index: 40;
 
     .window__wrapper {
+        height: 100%;
+        max-height: 100vh;
+        width: 100%;
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
         >div {
             padding: $gutter $gutter/2;
+
         }
     }
+
+    @media (max-width: $sm){
+        width: 100%;
+        height: calc(100vh - $gutter*3);
+        top: $gutter*1.5;
+        background-color: $white;
+        left: 0;
+
+        .window__wrapper {
+            height: 100%;
+        }
+    }
+}
+
+.screen-bounds-exhibitions {
+    position: fixed;
+    top: 0;
+    left: $gutter/2;
+    width: calc(100% - $gutter);
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+
+    @media (max-width: $md){
+        top: $gutter / 2;
+        height: calc(100% - $gutter);
+    }
+}
+
+.is-open {
+    opacity: 1;
+    visibility: visible;
 }

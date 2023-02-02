@@ -195,7 +195,8 @@ i, em {
 }
 
 p {
-    
+    line-height: 1.25em;
+
     &:first-child,
     &:only-child {
         margin-top: 0

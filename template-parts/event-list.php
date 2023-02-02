@@ -1,4 +1,6 @@
 <?php
+    $currentEventID = get_field('current_exhibition', 'options');
+
     $events = get_posts( array(
         'post_type' => 'events',
         'meta_key'  => 'date_from',
@@ -8,8 +10,8 @@
 
     if($events):
 ?>
-<div class="window window--exhibitions">
-    <button class="close-window">x</button>
+<div class="window-exhibitions">
+    <button class="close-window"></button>
     <div class="window__wrapper">
         <div>
             <ul class="events">
@@ -23,8 +25,9 @@
                     $dateTo = get_field('date_to', $eventID);
                     $dateToYear = $dateTo ? DateTime::createFromFormat('d.m.Y', $dateTo)->format('Y') : null;
                     $dateFrom = $dateTo ? ($dateFromYear == $dateToYear ? DateTime::createFromFormat('d.m.Y', $dateFrom)->format('d.m') : $dateFrom) : $dateFrom;
+                    $onDisplayClass = $currentEventID ? ($currentEventID == $eventID ? 'event--on-display' : '') : '' ;
                 ?>
-                <li class="event event--on-display">
+                <li class="event <?php echo $onDisplayClass; ?>" data-id="<?php echo $eventID; ?>">
                     <a href="<?php echo get_permalink($eventID); ?>" title="<?php echo $artist . ' - ' . $exhibitionTitle; ?>">
                         <span class="event__time">
                             <?php if ($dateBeforeText) : ?>

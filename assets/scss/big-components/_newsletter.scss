@@ -5,13 +5,18 @@
     // border: 1px solid black;
     padding: $gutter/4 $gutter/2;
     border-radius: 100px;
-    display: none;
+    // display: none;
     background-color: rgba($black, 1);
-    color: white;
+    color: $white;
+    opacity: 0;
+    visibility: hidden;
+    // @include transition;
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
     //backdrop-filter: blur(5px);
 
     &--is-open {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 
     // &:hover {
@@ -38,18 +43,8 @@
 }
 
 .close-newsletter {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include close-x;
     top: -13px;
-    right: 0;
-    background-color: $black;
-    color: white;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    line-height: .5;
 }
 
 .newsletter__label {
@@ -63,7 +58,7 @@
     height: 100%;
     padding: inherit;
     background-color: rgba($black, 1);
-    color: white;
+    color: $white;
     border-radius: inherit;
     //backdrop-filter: blur(5px);
 
@@ -85,5 +80,18 @@
     input {
         flex: 1 1 100%;
         width: 100%;
+    }
+}
+
+.gallery-is-closed {
+    .newsletter,
+    .newsletter__label {
+        background-color: rgba($white, 1);
+        color: $black;
+    }
+
+    .close-newsletter {
+        background-color: rgba($white, 1);
+        color: $black;
     }
 }

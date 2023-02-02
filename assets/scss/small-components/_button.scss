@@ -4,16 +4,16 @@ button {
 }
 
 .close-window {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    top: -12px;
-    right: -12px;
-    width: 24px;
-    height: 24px;
-    border: 1px solid $white;
-    border-radius: 50%;
-    background-color: black;
+    @include close-x;
+
+    .window-exhibitions & {
+        right: $gutter/2;
+    }
+
+    .window-info & {
+        bottom: calc(100% + 13px);
+        right: 0;
+        top: unset;
+    }
+
 }

@@ -10,6 +10,6 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-barba="wrapper">
+<body <?php body_class('gallery-is-open'); ?> data-barba="wrapper">
 <?php wp_body_open(); ?>
     <main data-barba="container">
