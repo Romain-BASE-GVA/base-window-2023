@@ -3,8 +3,8 @@
     bottom: $gutter;
     right: $gutter;
     // border: 1px solid black;
-    padding: $gutter/4 $gutter/2;
-    border-radius: 100px;
+    padding: $gutter/3;
+    border-radius: 5px;
     // display: none;
     background-color: rgba($black, 1);
     color: $white;
@@ -13,6 +13,7 @@
     // @include transition;
     transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
     //backdrop-filter: blur(5px);
+    width: 400px;
 
     &--is-open {
         opacity: 1;
@@ -29,7 +30,7 @@
 
     @media (max-width: $md){
         width: calc(100% - ($gutter*2));
-        padding: $gutter/4;
+        // padding: $gutter/4;
         bottom: $gutter/2*3;
     }
 
@@ -44,7 +45,8 @@
 
 .close-newsletter {
     @include close-x;
-    top: -13px;
+    top: unset;
+    bottom: calc(100% + 13px);
 }
 
 .newsletter__label {
@@ -77,8 +79,7 @@
         opacity: 1;
     }
 
-    input {
-        flex: 1 1 100%;
+    > div {
         width: 100%;
     }
 }
@@ -93,5 +94,94 @@
     .close-newsletter {
         background-color: rgba($white, 1);
         color: $black;
+    }
+}
+
+.newsletter__field-group {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0;
+    column-gap: $gutter/4;
+}
+
+.newsletter__no-input {
+    order: 1;
+}
+
+.newsletter {
+    input[type="email"]{
+        order: 2;
+        width: calc((100%/3*2) - 5px);
+        border: none;
+        border-bottom: 1px solid $white!important;
+        background-color: transparent;
+        color: $white;
+        padding: 0;
+
+        &:focus {
+            outline: none;
+        }
+
+        .gallery-is-closed & {
+            border-bottom: 1px solid $black!important;
+            color: $black;
+        }
+    }
+
+    input[type="submit"]{
+        order: 3;
+        width: calc((100%/3) - 5px);
+    }
+
+    .mce-success-response,
+    .response {
+        order: 10;
+        flex: 0 0 auto;
+        font-weight: normal!important;
+        @include fs-xs;
+        color: currentColor;
+        margin: 0!important;
+        padding: .25em 0 0 0!important;
+        background-color: transparent!important;
+        color: currentColor!important;
+    }
+
+    .response {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .mce_inline_error:not(input) {
+        order: 10;
+        flex: 0 0 auto;
+        font-weight: normal!important;
+        @include fs-xs;
+        color: red;
+        margin: 0!important;
+        padding: .25em 0 0 0!important;
+        background-color: transparent!important;
+        color: red!important;
+    }
+
+    .btn {
+        @include transition;
+
+        .gallery-is-open & {
+            background-color: $white;
+            color: $black;
+            
+            &:hover {
+                background-color: rgba($white, .8);
+            }
+        }
+
+        .gallery-is-closed & {
+            background-color: $black;
+            color: $white;
+
+            &:hover {
+                background-color: rgba($black, .8);
+            }
+        }
     }
 }

@@ -14,6 +14,23 @@ button {
         bottom: calc(100% + 13px);
         right: 0;
         top: unset;
+
+        @media (max-width: $sm){
+            right: $gutter/2;
+        }
     }
 
+    .gallery-is-closed & {
+        background-color: $white;
+        color: $black;
+    }
+
+}
+
+.btn {
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+    @include fs-xs;
+    cursor: pointer;
 }

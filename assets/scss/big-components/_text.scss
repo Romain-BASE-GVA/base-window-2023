@@ -14,17 +14,41 @@
 
 .text--w-sm {
     width: 30%;
+
+    @media (max-width: $xl){
+        width: 60%;
+    }
+
+    // @media (max-width: $lg){
+    //     width: 60%;
+    // }
+
+    @media (max-width: $md){
+        width: 90%;
+    }
+
+    @media (max-width: $sm){
+        width: 100%;
+    }
 }
 
 .text--w-md {
     width: 50%;
+
+    @media (max-width: $lg){
+        width: 75%;
+    }
+
+    @media (max-width: $md){
+        width: 100%;
+    }
 }
 
 .text--w-lg {
-    width: 75%;
-    
+    width: calc(100% - (240px * 2));
+
     @media (max-width: $lg){
-        width: 85%;
+        width: 75%;
     }
 
     @media (max-width: $md){
@@ -38,6 +62,8 @@
     @media (max-width: $md){
         @include fs-xs;
     }
+
+    
 }
 
 .text--fs-sm {
@@ -45,6 +71,10 @@
 
     @media (max-width: $md){
         @include fs-sm;
+    }
+
+    @media (max-width: $sm){
+        @include fs-xs;
     }
 }
 

@@ -17,7 +17,7 @@ $(document).ready(function () {
         transitions: [{
           name: 'opacity-transition',
           once(data) {
-            slider($(data.next.html).find('.slider'));
+            slider($(data.next.html).find('.slider'), $(data.next.html).find('.top-event').data('show-at'));
             getAndSetCurrent($(data.next.html).find('.slider'));
             preventSamePageReload();
           },
@@ -37,7 +37,7 @@ $(document).ready(function () {
               duration: .33,
               onComplete: function(){
                 isTransitioning = false;
-                slider($(data.next.html).find('.slider'));
+                slider($(data.next.html).find('.slider'), $(data.next.html).find('.top-event').data('show-at'));
               }
             });
 
@@ -48,13 +48,9 @@ $(document).ready(function () {
     });
 
     function dragWindows() {
-        var windowExhibitionsHalfH = $('.window-exhibitions').outerHeight(true) / 2;
-        // var left = window.innerWidth < 576 ? 0 : 20;
-        // var width = window.innerWidth < 576 ? window.innerWidth : window.innerWidth - 40;
+        
         var exhibListDrag;
         var infoDrag;
-
-        gsap.set('.window-exhibitions', {'--halfHeight': windowExhibitionsHalfH + 'px' });
 
         if(window.innerWidth >= 576){
             exhibListDrag = Draggable.create('.window-exhibitions', {
@@ -62,7 +58,7 @@ $(document).ready(function () {
             });
 
             infoDrag = Draggable.create('.window-info', {
-                type: 'x,y', edgeResistance: 0.65, bounds: document.querySelector('.screen-bounds'), zIndexBoost: true
+                type: 'x,y', edgeResistance: 0.65, bounds: document.querySelector('.screen-bounds-infos'), zIndexBoost: true
             });
         };
 
@@ -72,15 +68,17 @@ $(document).ready(function () {
 
         var resetBounds = debounce(function() {
 
-            // var left = window.innerWidth < 576 ? 0 : 20;
-            // var width = window.innerWidth < 576 ? window.innerWidth : window.innerWidth - 40;
-
             if(window.innerWidth < 576){
                 exhibListDrag[0].kill();
+                infoDrag[0].kill();
                 gsap.set('.window-exhibitions', {x: 0, y: 0});
+                gsap.set('.window-info', {x: 0, y: 0});
             } else {
                 exhibListDrag = Draggable.create('.window-exhibitions', {
                     type: 'x,y', edgeResistance: 0.65, bounds: document.querySelector('.screen-bounds-exhibitions'), zIndexBoost: true
+                });
+                infoDrag = Draggable.create('.window-info', {
+                    type: 'x,y', edgeResistance: 0.65, bounds: document.querySelector('.screen-bounds-infos'), zIndexBoost: true
                 });
             }
 
@@ -100,6 +98,11 @@ $(document).ready(function () {
                 $winExhibitions.removeClass('is-open');
             } else {
                 $winExhibitions.addClass('is-open');
+
+                if(window.innerWidth < 576 && $winInfo.hasClass('is-open')){
+                    $winInfo.removeClass('is-open')
+                }
+
             }
 
         });
@@ -111,6 +114,10 @@ $(document).ready(function () {
                 $winInfo.removeClass('is-open');
             } else {
                 $winInfo.addClass('is-open');
+
+                if(window.innerWidth < 576 && $winExhibitions.hasClass('is-open')){
+                    $winExhibitions.removeClass('is-open')
+                }
             }
 
         });
@@ -122,12 +129,13 @@ $(document).ready(function () {
 
     };
 
-    function slider(slider) {
+    function slider(slider, showAt) {
 
         var $sliderIndex = $('.slider__index__current'),
             prevEventUrl = slider.data('previous-event'),
             nextEventUrl = slider.data('next-event'),
-            topEventShowAt = $('.top-event').data('show-at');
+            topEventShowAt = showAt;
+            // $('.top-event').data('show-at')
 
         function getPrev() {
             var currentItem = $('.slider').find('.slide--active'),
@@ -137,6 +145,11 @@ $(document).ready(function () {
                 currentItem.removeClass('slide--active');
                 prevItem.addClass('slide--active');
                 $sliderIndex.html(prevItem.index() + 1);
+
+                if(currentItem.find('video').length){
+                    currentItem.find('video')[0].pause();
+                }
+
             } else {
                 if(nextEventUrl.length){
                     barba.go(nextEventUrl);
@@ -151,9 +164,7 @@ $(document).ready(function () {
                 $('.slider__index').removeClass('slider__index--visible');
             };
 
-            if(currentItem.find('video').length){
-                currentItem.find('video')[0].pause();
-            }
+
 
             if(prevItem.find('video').length){
                 prevItem.find('video')[0].play();
@@ -168,6 +179,11 @@ $(document).ready(function () {
                 currentItem.removeClass('slide--active');
                 nextItem.addClass('slide--active');
                 $sliderIndex.html(nextItem.index() + 1);
+
+                if(currentItem.find('video').length){
+                    currentItem.find('video')[0].pause();
+                }
+                
             } else {
 
                 if(prevEventUrl.length){
@@ -183,9 +199,7 @@ $(document).ready(function () {
                 $('.slider__index').removeClass('slider__index--visible');
             };
 
-            if(currentItem.find('video').length){
-                currentItem.find('video')[0].pause();
-            }
+
 
             if(nextItem.find('video').length){
                 nextItem.find('video')[0].play();
@@ -229,7 +243,7 @@ $(document).ready(function () {
                 console.log(data)
                 var whatTimeIsItInGeneva = new Date(data.datetime);
                 whatTimeIsItInGeneva = whatTimeIsItInGeneva.getHours();
-                if (data.day_of_week < 6 && (whatTimeIsItInGeneva > 8 && whatTimeIsItInGeneva < 17)) {
+                if (data.day_of_week < 6 && (whatTimeIsItInGeneva > 8 && whatTimeIsItInGeneva < 18)) {
                     console.log('the gallery is OPEN')
                     $('body').addClass('gallery-is-open');
                 } else {
@@ -249,8 +263,15 @@ $(document).ready(function () {
         }
 
         $('.close-newsletter').on('click', function(e){
-            $('.newsletter').removeClass('newsletter--is-open');
+            $('.newsletter').removeClass('newsletter--is-open').css('z-index', '');
             Cookies.set('newsletter-seen', 'yes', { expires: 15 });
+        });
+
+        $('.window-info__item--nl').on('click', function(e){
+            e.preventDefault();
+            var zI = $('.window-info').css('z-index');
+            $('.newsletter').addClass('newsletter--is-open').css('z-index', zI+1);
+            
         });
     };
 

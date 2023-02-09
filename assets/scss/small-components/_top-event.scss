@@ -32,6 +32,10 @@
         padding: $gutter/2;
         @include fs-sm;
     }
+
+    @media (max-width: $sm){
+        @include fs-xs;
+    }
 }
 
 .top-event__title {

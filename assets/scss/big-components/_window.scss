@@ -2,30 +2,51 @@
     position: fixed;
     display: flex;
     align-items: center;
-    width: 450px;
+    width: 550px;
     max-height: 100vh;
     right: $gutter;
     bottom: $gutter;
-    padding: $gutter;
+    padding: $gutter*4 $gutter;
     @include fs-sm;
     opacity: 0;
     visibility: hidden;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(7px);
     border-radius: 5px;
     transition: visibility .1s ease-in-out, opacity .1s ease-in-out;
     z-index: 50;
 
     .gallery-is-open & {
         background-color: rgba(245,245,245,0.75);
-        padding: $gutter/2;
+    }
+
+    .gallery-is-closed & {
+        background-color: rgba(15, 15, 15, .75);
     }
 
     p {
         text-indent: 3em;
     }
 
+    a {
+        color: currentColor;
+    }
+
     @media (max-width: $sm){
         padding: $gutter/2;
+        width: 100%;
+        height: calc(100vh - $gutter*3);
+        top: $gutter*1.5;
+        background-color: $white;
+        left: 0;
+        @include fs-xs;
+
+        .gallery-is-open & {
+            background-color: $white;
+        }
+
+        .gallery-is-closed & {
+            background-color: $black;
+        }
     }
 }
 
@@ -66,6 +87,10 @@
         .window__wrapper {
             height: 100%;
         }
+
+        .gallery-is-closed & {
+            background-color: $black;
+        }
     }
 }
 
@@ -85,7 +110,71 @@
     }
 }
 
+.screen-bounds-infos {
+    position: fixed;
+    top: $gutter;
+    left: $gutter;
+    width: calc(100% - $gutter*2);
+    height: calc(100% - $gutter*2);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    // background-color: red;
+
+    @media (max-width: $md){
+        top: $gutter/4;
+        left: $gutter/4;
+        width: calc(100% - ($gutter / 2));
+        height: calc(100% - ($gutter / 2));
+    }
+}
+
 .is-open {
     opacity: 1;
     visibility: visible;
+}
+
+.window-info__item {
+    position: absolute;
+    @include fs-xs;
+}
+
+a.window-info__item {
+    color: currentColor;
+}
+
+.window-info__item--address,
+.window-info__item--mail {
+    top: $gutter;
+
+    @media (max-width: $sm){
+        top: $gutter/2;
+    }
+}
+
+.window-info__item--ig,
+.window-info__item--nl {
+    bottom: $gutter;
+
+    @media (max-width: $sm){
+        bottom: $gutter/2;
+    }
+}
+
+.window-info__item--address,
+.window-info__item--ig {
+    left: $gutter;
+
+    @media (max-width: $sm){
+        left: $gutter/2;
+    }
+}
+
+.window-info__item--mail,
+.window-info__item--nl {
+    right: $gutter;
+
+    @media (max-width: $sm){
+        right: $gutter/2;
+    }
 }
