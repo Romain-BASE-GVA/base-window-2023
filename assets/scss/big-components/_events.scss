@@ -144,7 +144,8 @@
         margin-right: .25em;
         border-radius: 100%;
         z-index: 10;
-        background-color: rgb(4, 255, 0);
+        // background-color: rgb(4, 255, 0);
+        background-color: currentColor;
         animation: live 1.5s infinite ease-in-out;
     }
 
@@ -161,6 +162,13 @@
         
     // }
 
+    // .gallery-is-closed & {
+    //     &:before {
+    //         background-color: $white;
+    //     }
+        
+    // }
+
     // .gallery-is-open & {
     //     &:before {
     //         background-color: rgb(4, 255, 0);
@@ -168,6 +176,7 @@
         
     // }
 }
+
 
 .event__artist {
     text-transform: uppercase;

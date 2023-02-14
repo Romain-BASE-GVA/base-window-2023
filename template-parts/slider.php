@@ -57,6 +57,8 @@
 		$prevPostPermalink = get_permalink($post->ID);
 	endwhile; endif; wp_reset_postdata();
 
+	if(!$previousEvent->have_posts()) : $prevPostPermalink = get_permalink(get_field('home_exhibition', 'options')); endif;
+
 	if ($nextEvent->have_posts()) : while ($nextEvent->have_posts()) : $nextEvent->the_post();
 		$nextPostPermalink = get_permalink($post->ID);
 	endwhile; endif; wp_reset_postdata();
@@ -131,7 +133,7 @@
 								</div>
 
 							<?php elseif ($type == 'text') :
-								$text = get_sub_field('text');
+								$text = do_shortcode( get_sub_field('text') );
 								$fontSizeClass = 'text--fs-' . get_sub_field('font_size');
 								$textWidthClass = 'text--w-' . get_sub_field('text_width');
 								$textAlignmentClass = 'text-' . get_sub_field('text_alignment');
@@ -141,7 +143,9 @@
 														echo ' ' . $fontSizeClass;
 														echo ' ' . $textAlignmentClass; ?>">
 										<div>
-											<?php echo $text; ?>
+											
+											<?php echo do_shortcode(get_sub_field('text')); ?>
+
 										</div>
 									</div>
 								</div>
